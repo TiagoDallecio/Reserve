@@ -1,14 +1,22 @@
 package com.reservance.reservance.model;
 
-import java.util.Date;
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "tbl_estabelecimentos")
 public class Estabelecimento {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nome;
 	private String funcionamento_dia;
-	private Date funcionamento_hora;
+	private int funcionamento_hora;
 	private int num_mesas;
 
 	public Long getId() {
@@ -35,11 +43,11 @@ public class Estabelecimento {
 		this.funcionamento_dia = funcionamento_dia;
 	}
 
-	public Date getFuncionamento_hora() {
+	public int getFuncionamento_hora() {
 		return funcionamento_hora;
 	}
 
-	public void setFuncionamento_hora(Date funcionamento_hora) {
+	public void setFuncionamento_hora(int funcionamento_hora) {
 		this.funcionamento_hora = funcionamento_hora;
 	}
 
@@ -56,7 +64,7 @@ public class Estabelecimento {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((funcionamento_dia == null) ? 0 : funcionamento_dia.hashCode());
-		result = prime * result + ((funcionamento_hora == null) ? 0 : funcionamento_hora.hashCode());
+		result = prime * result + funcionamento_hora;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + num_mesas;
@@ -77,10 +85,7 @@ public class Estabelecimento {
 				return false;
 		} else if (!funcionamento_dia.equals(other.funcionamento_dia))
 			return false;
-		if (funcionamento_hora == null) {
-			if (other.funcionamento_hora != null)
-				return false;
-		} else if (!funcionamento_hora.equals(other.funcionamento_hora))
+		if (funcionamento_hora != other.funcionamento_hora)
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -96,7 +101,8 @@ public class Estabelecimento {
 			return false;
 		return true;
 	}
-	
+
+
 	
 
 }

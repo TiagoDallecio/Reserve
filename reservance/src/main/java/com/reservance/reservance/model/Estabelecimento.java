@@ -19,6 +19,23 @@ public class Estabelecimento {
 	private int funcionamento_hora;
 	private int num_mesas;
 
+	public Estabelecimento() {
+		
+	}
+	
+	
+	
+	public Estabelecimento(Long id, String nome, String funcionamento_dia, int funcionamento_hora, int num_mesas) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.funcionamento_dia = funcionamento_dia;
+		this.funcionamento_hora = funcionamento_hora;
+		this.num_mesas = num_mesas;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

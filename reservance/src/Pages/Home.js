@@ -4,7 +4,7 @@ function Home(props){
 
         <>
         <h1>
-            {props.name} 
+            Home
         </h1>
         
         <p>

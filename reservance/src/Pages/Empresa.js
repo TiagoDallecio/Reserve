@@ -4,10 +4,10 @@ function Empresa(props){
 
         <>
         <h1>
-            {props.name}
+            Empresa
         </h1>
         <p>
-            Apresentaçãooo
+            Apresentação
         </p>
         </>
 

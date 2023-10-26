@@ -1,0 +1,10 @@
+.list{
+    display: flex;
+    list-style:disc;
+
+}
+
+.item{
+
+    margin-right: 2em;
+}

@@ -1,12 +1,16 @@
-body {
-  padding: 50 px;
-  background-color: bisque;
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', 'sans-serif';
 }
+
+html, body, #root 
+{
+  background-color: bisque;
+  height: 100%;
+}
+
 h1 {
     color: brown;
   }
-p{
-  background-color: beige;
-  padding: 10px;
-}

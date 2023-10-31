@@ -5,20 +5,21 @@ function Footer(){
 
 return(
 
-    <>
+    <footer className={styles.footer}>
     <ul className={styles.social_list}>
-        <li>
+        <li className={styles.social_list}>
             <FaGithub/>
         </li>
-        <li>
+        <li className={styles.social_list}>
             <FaLinkedin/>
         </li>
-        <li>
+        <li className={styles.social_list}>
             <FaInstagram/>
         </li>
     </ul>
-    <p>Nossas Redes!</p>
-    </>
+    <p className={styles.copy_right}><span>Reservance</span> &copy; 2023</p>
+    </footer>
+    
 )
 
 }

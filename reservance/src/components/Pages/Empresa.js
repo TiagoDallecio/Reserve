@@ -6,9 +6,7 @@ function Empresa(props){
         <h1>
             Empresa
         </h1>
-        <p>
-            Apresentação
-        </p>
+        
         </>
 
     )

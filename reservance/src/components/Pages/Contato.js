@@ -7,9 +7,7 @@ function Contato(props){
             Contato
         </h1>
         
-        <p>
-            Apresentação
-        </p>
+        
         </>
 
     )

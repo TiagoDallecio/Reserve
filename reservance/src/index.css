@@ -7,10 +7,10 @@
 
 html, body, #root 
 {
-  background-color: bisque;
+  background-color:azure;
   height: 100%;
 }
 
 h1 {
-    color: brown;
+    color:navy;
   }

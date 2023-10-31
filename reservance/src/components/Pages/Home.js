@@ -7,9 +7,6 @@ function Home(props){
             Home
         </h1>
         
-        <p>
-            Apresentação
-        </p>
         </>
 
     )

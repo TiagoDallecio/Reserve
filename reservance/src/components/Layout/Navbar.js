@@ -7,7 +7,7 @@ function Navbar(){
 
     return(
 
-      <nav class={styles.navbar}>
+      <nav className={styles.navbar}>
         <Container>
         <li >
             <Link to="/"><img src={logo} alt="Reservance"/></Link>

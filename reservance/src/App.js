@@ -6,6 +6,7 @@ import CriarProjeto from './components/Pages/CriarProjeto'
 import Navbar from './components/Layout/Navbar'
 import Footer from './components/Layout/Footer'
 import Container from './components/Layout/Container'
+import MapaReserva from './components/Pages/MapaReserva'
 
 const name ='Reservance'
 
@@ -20,6 +21,7 @@ function App() {
            <Route exact path="/Empresa" element={<Empresa/>} />
            <Route exact path="/Contato" element={<Contato/>} />
            <Route exact path="/CriarProjeto" element={<CriarProjeto/>} />
+           <Route exact path="/MapaReserva" element={<MapaReserva/>} />
         </Routes>
     </Container>
       

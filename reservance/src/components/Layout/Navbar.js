@@ -25,6 +25,9 @@ function Navbar(){
           <li className={styles.item}>
             <Link to="/CriarProjeto">CriarProjeto</Link>
           </li>
+          <li className={styles.item}>
+            <Link to="/MapaReserva">Mapa de Reserva</Link>
+          </li>
           </ul>
           </Container>
       </nav>

@@ -1,0 +1,12 @@
+.MesasSelect{
+    margin: 40px;
+}
+img{
+    margin: 5px;
+}
+.Board{
+    margin: 40px;
+    width: 2000px;
+    height: 500px;
+    border: 2px solid black;
+}

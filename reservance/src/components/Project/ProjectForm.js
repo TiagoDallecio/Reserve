@@ -14,7 +14,6 @@ function ProjectForm(props){
         <Input type="time" text="Horário de Abertura" name="Abertura" placeholder="Abertura"/>
         <Input type="time" text="Horário de Fechamento" name="Fechamento" placeholder="Fechamento"/>
         
-        <Select name="category_id" text="Selecione uma categoria"/>
 
         <SubmitButton text={props.btnText}/>
 

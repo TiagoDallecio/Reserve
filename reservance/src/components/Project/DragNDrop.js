@@ -1,9 +1,11 @@
 import MesaQuatro from '../../img/MesaQuatro.png';
 import MesaDois from '../../img/MesaDois.png';
 import PictureDND from './PictureDND';
+import SaveButton from '../form/SaveButton';
 import './DragNDrop.modules.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
+import BoardComponent from './BoardComponent';
 
 const PictureList = [
   {
@@ -63,6 +65,7 @@ function DragNDrop() {
     return button ? button.name : null;
   };
 
+
   return (
     <>
       <div className="MesasSelect">
@@ -89,18 +92,18 @@ function DragNDrop() {
           style={{
             position: 'absolute',
             top: buttonPosition.y,
-            left: buttonPosition.x + 50, // Ajuste para posicionar ao lado do botão
-            backgroundColor: '#fff', // Fundo branco
-            padding: '10px', // Adicionando algum espaço interno para melhorar a aparência
-            border: '1px solid #000', // Contorno preto
-            borderRadius: '5px', // Borda arredondada
+            left: buttonPosition.x + 50,
+            backgroundColor: '#fff',
+            padding: '10px',
+            border: '1px solid #000',
+            borderRadius: '5px',
           }}
         >
-          Informações para {hoveredButtonId}, Board ID: {getBoardId(hoveredButtonId)}, Image ID: {getImageId(hoveredButtonId)}, Nome da Imagem: {getImageName(hoveredButtonId)}
+          Board ID: {getBoardId(hoveredButtonId)}, Image ID: {getImageId(hoveredButtonId)}, Nome da Imagem: {getImageName(hoveredButtonId)}
         </div>
       )}
     </>
   );
 }
 
-export default DragNDrop;
+export default DragNDrop

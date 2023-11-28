@@ -28,6 +28,9 @@ function Navbar(){
           <li className={styles.item}>
             <Link to="/MapaReserva">Mapa de Reserva</Link>
           </li>
+          <li className={styles.item}>
+            <Link to="/ExecReserva">Reserva</Link>
+          </li>
           </ul>
           </Container>
       </nav>

@@ -1,0 +1,14 @@
+.Board {
+  margin: 40px;
+  width: 1800px;
+  height: 500px;
+  border: 2px solid black;
+}
+
+.Button{
+  background-color: white;
+}
+.Button:hover{
+  background-color:#f5fffa;
+}
+

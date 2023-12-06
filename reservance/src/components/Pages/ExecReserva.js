@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import './ExecReserva.module.css';
 import MesaQuatro from '../../img/MesaQuatro.png';
 import MesaDois from '../../img/MesaDois.png';
+import LinkButton from '../Layout/LinkButton';
 
 const PictureList = [
   {
@@ -40,9 +41,11 @@ function ExecReserva() {
       </div>
       {selectedButton && (
         <div className="InfoPanel">
-          <p>Informações sobre o botão:</p>
           <p>ID: {selectedButton}</p>
-          <p>Nome: {PictureList.find(p => p.id === selectedButton)?.name}</p>
+          <p>Tipo: {PictureList.find(p => p.id === selectedButton)?.name}</p>
+          <p>Disponivel:</p>
+          <p>Espaço: Salão Principal</p>
+          <LinkButton to="/FormsReserva" text="Reserva"/>
         </div>
       )}
     </>

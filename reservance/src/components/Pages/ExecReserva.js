@@ -1,10 +1,9 @@
-// ExecReserva.js
-
 import React, { useState } from 'react';
 import './ExecReserva.module.css';
 import MesaQuatro from '../../img/MesaQuatro.png';
 import MesaDois from '../../img/MesaDois.png';
 import LinkButton from '../Layout/LinkButton';
+import styles from './ExecReserva.module.css'
 
 const PictureList = [
   {
@@ -40,12 +39,18 @@ function ExecReserva() {
         ))}
       </div>
       {selectedButton && (
-        <div className="InfoPanel">
+        <div className={styles.InfoPainel }
+        style={{padding: '0.5em' }}>
           <p>ID: {selectedButton}</p>
           <p>Tipo: {PictureList.find(p => p.id === selectedButton)?.name}</p>
           <p>Disponivel:</p>
           <p>Espaço: Salão Principal</p>
-          <LinkButton to="/FormsReserva" text="Reserva"/>
+          <p></p>
+          <p></p>
+          <LinkButton to="/FormsReserva" text="Reservar"/>
+          <p></p>
+          <p></p>
+
         </div>
       )}
     </>

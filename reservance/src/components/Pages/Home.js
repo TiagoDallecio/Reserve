@@ -5,6 +5,13 @@ import imagem3 from '../../img/restaurantecima3.png'
 import imagem4 from '../../img/restaurantecima4.png'
 import imagem5 from '../../img/restaurantecima5.png'
 import imagem6 from '../../img/restaurantecima6.png'
+import imagem7 from '../../img/restaurantecima7.png'
+import imagem8 from '../../img/restaurantecima8.png'
+import imagem9 from '../../img/restaurantecima9.png'
+import imagem10 from '../../img/restaurantecima10.png'
+import imagem11 from '../../img/restaurantecima11.png'
+import imagem12 from '../../img/restaurantecima12.png'
+
 
 import LinkButton from '../Layout/LinkButton'
 import { register } from 'swiper/element/bundle'
@@ -12,17 +19,21 @@ import 'swiper/css'
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
+
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 register();
 
 const imagens =[
 
-    { id:'1', image: imagem},
     { id:'2', image: imagem2},
     { id:'3', image: imagem3},
-    { id:'4', image: imagem4},
     { id:'5', image: imagem5},
-    { id:'6', image: imagem6},
+    { id:'10', image: imagem10},
+    { id:'11', image: imagem11},
+    { id:'12', image: imagem12},
 
 ]
 
@@ -33,9 +44,13 @@ function Home(props){
     return(
         <>
         <Swiper
+            spaceBetween={30}
             slidesPerView={1}
+            loop={true}
+            modules={[Pagination, Navigation]}
             pagination={{ clickable: true }}
             navigation
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             >
                 {imagens.map( (item) =>(
                     <SwiperSlide key={item.id}>
@@ -57,7 +72,6 @@ function Home(props){
              </h1>    
                 <p>A melhor reserva para a melhor experiência!</p>
                 <LinkButton to="/CriarProjeto" text="Criar Projeto"/>
-                <img src={imagem} alt="Reservance"/>
            
 
         </section>

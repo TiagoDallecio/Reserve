@@ -1,0 +1,30 @@
+.empresa_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: top;
+    padding: 2em;
+}
+
+.empresa_container h1{
+    font-size: 2.5em;
+    margin-bottom: .5em;
+}
+.empresa_container img{
+    width: 200px;
+    height: 200px;
+    margin-bottom: .5em;
+}
+.empresa_container div1{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: top;
+    padding: 2em;
+}
+.empresa_container p1{
+    width: 300px;
+    margin-bottom: .5em;
+}

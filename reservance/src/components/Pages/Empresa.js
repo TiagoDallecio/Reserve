@@ -15,7 +15,7 @@ function Empresa(props){
         <p1> A Reservance, é um projeto idealizado a partir de um projeto de faculdade, do qual, a vontade
             e carinho pela idéia, se externalisou e se concretizou nesta empresa.
         </p1>
-        <img  src={imagem}/>
+        <img  src={imagem} alt="complemento"/>
         </div1>
         </div>
         

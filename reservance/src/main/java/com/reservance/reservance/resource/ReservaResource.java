@@ -43,6 +43,11 @@ public class ReservaResource {
 		return rp.findReservasOfCPF(CPF);
 	}
 	
+	@GetMapping("{name}/reservas")
+	public List<Reserva> getEstabReservas(@PathVariable String name) {
+		return rp.findAllEstReservas(name);
+	}
+	
 	@PutMapping("/{name}/reservas/{CPF}")
 	public Reserva updateReserva(@PathVariable String name,@PathVariable String CPF, @RequestBody Reserva reserva) {
 		Reserva reservaAtual = rp.findReservaInEst(name,CPF);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ExecReserva.module.css';
 import MesaQuatro from '../../img/MesaQuatro.png';
 import MesaDois from '../../img/MesaDois.png';
@@ -56,27 +57,29 @@ const PictureList = [
 
 function ExecReserva() {
   const [selectedButton, setSelectedButton] = useState(null);
+  const navigate = useNavigate();
 
   const handleButtonClick = (id) => {
     setSelectedButton(selectedButton === id ? null : id);
   };
 
   const handleBodyClick = (e) => {
-    // Verifica se o clique ocorreu fora dos botões
     if (!e.target.closest(".Board")) {
       setSelectedButton(null);
     }
   };
 
-  useEffect(() => {
-    // Adiciona o manipulador de clique ao corpo do documento
-    document.body.addEventListener("click", handleBodyClick);
+  const handleReservarClick = () => {
+    const selectedMesa = PictureList.find((p) => p.id === selectedButton);
+    navigate('/FormsReserva', { state: { mesa: selectedMesa } });
+  };
 
-    // Remove o manipulador quando o componente é desmontado
+  useEffect(() => {
+    document.body.addEventListener("click", handleBodyClick);
     return () => {
       document.body.removeEventListener("click", handleBodyClick);
     };
-  }, []);
+  }, [selectedButton]);
 
   return (
     <>
@@ -90,7 +93,7 @@ function ExecReserva() {
                   ? 'white'
                   : picture.disponivel
                   ? 'azure'
-                  : 'firebrick',
+                  : 'red',
             }}
             onClick={() => handleButtonClick(picture.id)}
           >
@@ -108,7 +111,7 @@ function ExecReserva() {
             <>
               <p></p>
               <p></p>
-              <LinkButton to="/FormsReserva" text="Reservar" />
+              <button onClick={handleReservarClick}>Reservar</button>
             </>
           )}
           <p></p>

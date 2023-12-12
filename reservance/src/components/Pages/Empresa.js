@@ -19,6 +19,7 @@ function Empresa(props) {
         <div className={styles.titulo_container}>
           <h1>Empresa</h1>
           <h2>Quem Somos</h2>
+
         </div>
         <p>
           Bem-vindo à nossa plataforma de reservas de mesas, criada por alunos da PUC Campinas. Conectando pessoas e experiências gastronômicas de forma simples e eficiente.

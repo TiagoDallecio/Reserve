@@ -9,6 +9,7 @@ import Container from './components/Layout/Container'
 import MapaReserva from './components/Pages/MapaReserva'
 import ExecReserva from './components/Pages/ExecReserva'
 import FormsReserva from './components/Pages/FormsReserva'
+import ViewReservas from './components/Pages/ViewReservas'
 
 const name ='Reservance'
 
@@ -26,6 +27,7 @@ function App() {
            <Route exact path="/MapaReserva" element={<MapaReserva/>} />
            <Route exact path="/ExecReserva" element={<ExecReserva/>} />
            <Route exact path="/FormsReserva" element={<FormsReserva/>} />
+           <Route exact path="/ViewReservas" element={<ViewReservas/>} />
         </Routes>
     </Container>
       

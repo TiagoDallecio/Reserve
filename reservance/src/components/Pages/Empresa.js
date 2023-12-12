@@ -51,7 +51,7 @@ function Empresa(props) {
           </button>
         </div>
         <div className={styles.imagem_container}>
-          <button onClick={() => mostrarInformacao('Nome: Thiago Dalecio / RA: ')}>
+          <button onClick={() => mostrarInformacao('Nome: Thiago Dalecio / RA: 22001336')}>
             <p>Thiago Dalecio</p>
             <img src={dalecio} alt="Imagem do Dalecio" />
           </button>

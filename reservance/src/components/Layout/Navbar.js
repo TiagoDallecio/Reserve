@@ -34,6 +34,9 @@ function Navbar(){
           <li className={styles.item}>
             <Link to="/ViewReservas">Ver Reservas</Link>
           </li>
+          <li className={styles.item}>
+            <Link to="/Cadastro">Cadastre-se</Link>
+          </li>
           </ul>
           </Container>
       </nav>

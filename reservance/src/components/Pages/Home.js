@@ -66,11 +66,12 @@ function Home(props){
                     </SwiperSlide>
                 ))}
         </Swiper>
+        
         <section className={styles.home_container}>
             <h1>
                  <span>Reser</span><span1>vance</span1>
              </h1>    
-                <p>A melhor reserva para a melhor experiência!</p>
+                <h3>A melhor reserva, para a melhor experiência!</h3>
                 <LinkButton to="/CriarProjeto" text="Criar Projeto"/>
            
 

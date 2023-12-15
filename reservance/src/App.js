@@ -10,6 +10,7 @@ import MapaReserva from './components/Pages/MapaReserva'
 import ExecReserva from './components/Pages/ExecReserva'
 import FormsReserva from './components/Pages/FormsReserva'
 import ViewReservas from './components/Pages/ViewReservas'
+import Cadastro from './components/Pages/Cadastro'
 
 const name ='Reservance'
 
@@ -28,6 +29,7 @@ function App() {
            <Route exact path="/ExecReserva" element={<ExecReserva/>} />
            <Route exact path="/FormsReserva" element={<FormsReserva/>} />
            <Route exact path="/ViewReservas" element={<ViewReservas/>} />
+           <Route exact path="/Cadastro" element={<Cadastro/>} />
         </Routes>
     </Container>
       

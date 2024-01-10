@@ -7,7 +7,6 @@ function Cadastro() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [selectedOption, setSelectedOption] = useState(null);
   const [erro, setErro] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -35,28 +34,19 @@ function Cadastro() {
   return (
     <div className={styles.caixa}>
       <div2>
-        <h2>Nova Conta</h2>
+        <h2>Reservance</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
           <Input
             type="text"
             text="Nome"
             name="nome"
             id="username"
-            placeholder="Insira o seu Nome de usuario"
+            placeholder="Insira o seu Nome de usuario ou email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             style={{ borderColor: erro && username.trim() === '' ? 'red' : 'initial' }}
           />
-          <Input
-            type="email"
-            text="e-mail"
-            name="email"
-            id="email"
-            placeholder="reservance@reservance.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ borderColor: erro && email.trim() === '' ? 'red' : 'initial' }}
-          />
+          
           <Input
             type="password"
             text="Senha"
@@ -67,37 +57,10 @@ function Cadastro() {
             onChange={(e) => setPassword(e.target.value)}
             style={{ borderColor: erro && password.trim() === '' ? 'red' : 'initial' }}
           />
-          <Input
-            type="password"
-            text="Confirme sua senha"
-            name="confirmasenha"
-            id="confirmasenha"
-            placeholder="Confirme sua Senha"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            style={{ borderColor: erro && confirmPassword.trim() === '' ? 'red' : 'initial' }}
-          />
-          <p><b>Qual seu tipo de conta?</b></p>
-          <label className={styles.select}>
-          <input
-              type="checkbox"
-              name="opcao1"
-              checked={selectedOption === 'opcao1'}
-              onChange={() => setSelectedOption('opcao1')}
-            />
-            Estabelecimento
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="opcao2"
-              checked={selectedOption === 'opcao2'}
-              onChange={() => setSelectedOption('opcao2')}
-            />
-            Usuário
-          </label>
+          
           {erro && <p className={styles.errorMessage}>{errorMessage}</p>}
-          <button type="submit">Cadastrar</button>
+          <p>Não possui uma conta? <a href="/Cadastro">Cadastrar-se</a></p>
+          <button type="submit">Entrar</button>
         </form>
       </div2>
     </div>

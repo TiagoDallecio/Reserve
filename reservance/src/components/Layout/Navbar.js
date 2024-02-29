@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom'
 import styles from './Navbar.module.css'
 import logo from '../../img/logosemfundo.png'
 import Container from './Container'
+import Cardapio from '../Pages/Cardapio'
 
 function Navbar(){
 
@@ -26,7 +27,7 @@ function Navbar(){
             <Link to="/CriarProjeto">CriarProjeto</Link>
           </li>
           <li className={styles.item}>
-            <Link to="/MapaReserva">Mapa de Reserva</Link>
+            <Link to="/AddCardapio">AddCardapio</Link>
           </li>
           <li className={styles.item}>
             <Link to="/ExecReserva">Reserva</Link>
@@ -36,6 +37,9 @@ function Navbar(){
           </li>
           <li className={styles.item}>
             <Link to="/Entrar">Entrar</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/Cardapio">Cardapio</Link>
           </li>
           </ul>
           </Container>

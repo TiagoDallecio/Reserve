@@ -12,6 +12,8 @@ import FormsReserva from './components/Pages/FormsReserva'
 import ViewReservas from './components/Pages/ViewReservas'
 import Cadastro from './components/Pages/Cadastro'
 import Entrar from './components/Pages/Entrar'
+import Cardapio from './components/Pages/Cardapio'
+import AddCardapio from './components/Pages/AddCardapio'
 
 const name ='Reservance'
 
@@ -26,12 +28,13 @@ function App() {
            <Route exact path="/Empresa" element={<Empresa/>} />
            <Route exact path="/Contato" element={<Contato/>} />
            <Route exact path="/CriarProjeto" element={<CriarProjeto/>} />
-           <Route exact path="/MapaReserva" element={<MapaReserva/>} />
+           <Route exact path="/AddCardapio" element={<AddCardapio/>} />
            <Route exact path="/ExecReserva" element={<ExecReserva/>} />
            <Route exact path="/FormsReserva" element={<FormsReserva/>} />
            <Route exact path="/ViewReservas" element={<ViewReservas/>} />
            <Route exact path="/Cadastro" element={<Cadastro/>} />
            <Route exact path="/Entrar" element={<Entrar/>} />
+           <Route exact path="/Cardapio" element={<Cardapio/>} />
         </Routes>
     </Container>
       

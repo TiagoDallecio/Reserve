@@ -40,7 +40,7 @@ function Cadastro() {
           <Input
             type="text"
             text="Nome"
-            name="nome"
+            name="nome"S
             id="username"
             placeholder="Insira o seu Nome de usuario"
             value={username}

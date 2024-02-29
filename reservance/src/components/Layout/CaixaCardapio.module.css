@@ -1,0 +1,54 @@
+.caixa{
+    border-radius: 10px;
+    border: 1px solid gray;
+    box-shadow: 3px;
+    width: 400px;
+    height: 150px;
+    padding: 0;
+    display: flex;
+}
+.img{
+    border-radius: 10px;
+    background-image: url('C:\Users\re_ro\Reservance-master\Reservance\reservance\src\img\pratorestaurante.png');
+    width: 150px;
+    height: 150px;
+
+}
+.nome{
+    text-align: center;
+    font-weight: 700;
+}
+.subcaixa{
+    width: 250px;
+}
+.preco{
+    font: bold;
+    text-align: right;
+    margin-right: 5px;
+    font-weight: 700;
+}
+.descricao{
+    height: 100px;
+}
+.button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 100%;
+    margin-left: 3px;
+}
+
+.checked {
+    background-color: white;
+    color: green;
+    border: 1px solid green;
+}
+.barrabaixa{
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

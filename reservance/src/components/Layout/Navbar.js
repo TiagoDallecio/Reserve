@@ -27,7 +27,7 @@ function Navbar(){
             <Link to="/CriarProjeto">CriarProjeto</Link>
           </li>
           <li className={styles.item}>
-            <Link to="/AddCardapio">AddCardapio</Link>
+            <Link to="/Addprato">Addprato</Link>
           </li>
           <li className={styles.item}>
             <Link to="/ExecReserva">Reserva</Link>

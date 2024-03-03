@@ -1,3 +1,4 @@
+// CaixaCardapio.js
 import React, { useState } from 'react';
 import styles from '../Layout/CaixaCardapio.module.css';
 
@@ -11,6 +12,11 @@ function CaixaCardapio(props) {
 
     const handleButtonClick = () => {
         setChecked(!checked);
+        if (!checked) {
+            props.adicionarAoCarrinho({ ...props, quantidade });
+        } else {
+            props.removerDoCarrinho(props.id); // Remover do carrinho se já estiver presente
+        }
     };
 
     const handleIncreaseQuantity = () => {
@@ -36,7 +42,7 @@ function CaixaCardapio(props) {
                         </button>
                         
                     </div>
-                    <div className={styles.preco}>{props.preco}</div>
+                    <div className={styles.preco}>{props.preco},00</div>
                 </div>
             </div>
         </div>

@@ -48,6 +48,8 @@ textarea {
 }
 
 .button{
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;

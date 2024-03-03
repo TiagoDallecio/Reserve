@@ -17,7 +17,7 @@ function Addprato() {
         }
     ]);
 
-    const [novoPrato, setNovoPrato] = useState({ nome: '', descricao: '', preco: '' });
+    const [novoPrato, setNovoPrato] = useState({ nome: '', descricao: '', preco: '', imagem: null });
     const [pratoEditando, setPratoEditando] = useState(null);
 
     const handleNovoPratoChange = (e) => {
@@ -25,12 +25,17 @@ function Addprato() {
         setNovoPrato(prevState => ({ ...prevState, [name]: value }));
     };
 
+    const handleImagemChange = (e) => {
+        const file = e.target.files[0];
+        setNovoPrato(prevState => ({ ...prevState, imagem: file }));
+    };
+
     const handleNovoPratoSubmit = (e) => {
         e.preventDefault();
         const novoId = pratos.length + 1;
         const novoPratoComId = { ...novoPrato, id: novoId };
         setPratos([...pratos, novoPratoComId]);
-        setNovoPrato({ nome: '', descricao: '', preco: '' });
+        setNovoPrato({ nome: '', descricao: '', preco: '', imagem: null });
     };
 
     const handleEditarPrato = (prato) => {
@@ -61,6 +66,7 @@ function Addprato() {
         <div className={styles.container}>
             <h2>Adicionar Novo Prato</h2>
             <form onSubmit={handleNovoPratoSubmit}>
+                
                 <div className={styles.inputGroup}>
                     <label htmlFor="nome">Nome:</label>
                     <input
@@ -72,6 +78,18 @@ function Addprato() {
                         required
                     />
                 </div>
+
+                <div className={styles.inputGroup}>
+                    <label htmlFor="imagem">Imagem:</label>
+                    <input
+                        type="file"
+                        id="imagem"
+                        name="imagem"
+                        onChange={handleImagemChange}
+                        accept="image/*"
+                    />
+                </div>
+
                 <div className={styles.inputGroup}>
                     <label htmlFor="descricao">Descrição:</label>
                     <textarea
@@ -93,13 +111,14 @@ function Addprato() {
                         required
                     />
                 </div>
-                <button className={styles.button}  type="submit">Adicionar Prato</button>
+                <button className={styles.button} type="submit">Adicionar Prato</button>
             </form>
 
-            <h2>Pratos Existente</h2>
+            <h2>Pratos Existentes</h2>
             <ul>
                 {pratos.map(prato => (
                     <li key={prato.id}>
+                        {/* Renderização condicional para editar pratos */}
                         {pratoEditando && pratoEditando.id === prato.id ? (
                             <>
                                 <div>

@@ -5,20 +5,80 @@ function Addprato() {
     const [pratos, setPratos] = useState([
         {
             id: 1,
-            nome: "Macarrão",
-            descricao: "Delicioso macarrão com molho de tomate.",
+            name: "Macarrão",
+            descricao: "blablabla",
+            categoria: "pratopricipal",
             preco: 20.00,
+            
         },
         {
             id: 2,
-            nome: "Risotto",
-            descricao: "Risotto cremoso com cogumelos.",
+            name: "Risotto",
+            categoria: "pratopricipal",
+            descricao: "blablabla",
             preco: 30.00,
-        }
+            
+        },
+        {
+            id: 3,
+            name: "Caipirinha",
+            categoria: "bebida",
+            descricao: "blablabla",
+            preco: 30.00,
+            
+        },
+        {
+            id: 4,
+            name: "sorvete",
+            categoria: "sobremesa",
+            descricao: "blablabla",
+            preco: 30.00,
+            
+        },
+        {
+            id: 5,
+            name: "polenta frita",
+            categoria: "entrada",
+            descricao: "blablabla",
+            preco: 30.00,
+            
+        },
+        {
+            id: 6,
+            name: "picolé",
+            categoria: "sobremesa",
+            descricao: "blablabla",
+            preco: 30.00,
+            
+        },
+        {
+            id: 7,
+            name: "casquinha de siri",
+            categoria: "entrada",
+            descricao: "blablabla",
+            preco: 30.00,
+        },
+        {
+            id: 8,
+            name: "5 cervejas",
+            categoria: "combo",
+            descricao: "blablabla",
+            preco: 30.00,
+            
+        },
+        {
+            id: 9,
+            name: "aguas",
+            categoria: "bebida sem alcool",
+            descricao: "blablabla",
+            preco: 30.00,
+            
+        },
     ]);
 
     const [novoPrato, setNovoPrato] = useState({ nome: '', descricao: '', preco: '', imagem: null });
     const [pratoEditando, setPratoEditando] = useState(null);
+    const [excluirPratoId, setExcluirPratoId] = useState(null); // Estado para armazenar o id do prato a ser excluído
 
     const handleNovoPratoChange = (e) => {
         const { name, value } = e.target;
@@ -58,8 +118,17 @@ function Addprato() {
     };
 
     const handleRemoverPrato = (id) => {
-        const pratosFiltrados = pratos.filter(prato => prato.id !== id);
+        setExcluirPratoId(id); // Defina o id do prato a ser excluído
+    };
+
+    const confirmarExclusao = () => {
+        const pratosFiltrados = pratos.filter(prato => prato.id !== excluirPratoId);
         setPratos(pratosFiltrados);
+        setExcluirPratoId(null); // Limpar o id do prato a ser excluído
+    };
+
+    const cancelarExclusao = () => {
+        setExcluirPratoId(null); // Limpar o id do prato a ser excluído
     };
 
     return (
@@ -87,6 +156,18 @@ function Addprato() {
                         name="imagem"
                         onChange={handleImagemChange}
                         accept="image/*"
+                    />
+                </div>
+
+                <div className={styles.inputGroup}>
+                    <label htmlFor="Categoria">Categoria:</label>
+                    <input
+                        type="text"
+                        id="categoria"
+                        name="categoria"
+                        value={novoPrato.categoria}
+                        onChange={handleNovoPratoChange}
+                        required
                     />
                 </div>
 
@@ -131,6 +212,15 @@ function Addprato() {
                                     />
                                 </div>
                                 <div>
+                                    <input
+                                        type="text"
+                                        name="categoria"
+                                        value={pratoEditando.categoria}
+                                        onChange={(e) => setPratoEditando({ ...pratoEditando, categoria: e.target.value })}
+                                        required
+                                    />
+                                </div>
+                                <div>
                                     <textarea
                                         name="descricao"
                                         value={pratoEditando.descricao}
@@ -155,7 +245,10 @@ function Addprato() {
                         ) : (
                             <>
                                 <div>
-                                    <strong>Nome:</strong> {prato.nome}
+                                    <strong>Nome:</strong> {prato.name}
+                                </div>
+                                <div>
+                                    <strong>Categoria:</strong> {prato.categoria}
                                 </div>
                                 <div>
                                     <strong>Descrição:</strong> {prato.descricao}
@@ -165,13 +258,23 @@ function Addprato() {
                                 </div>
                                 <div>
                                     <button className={styles.button} onClick={() => handleEditarPrato(prato)}>Editar</button>
-                                    <button className={styles.button} onClick={() => handleRemoverPrato(prato.id)}>Remover</button>
+                                    <button className={styles.buttonremove} onClick={() => handleRemoverPrato(prato.id)}>Remover</button>
                                 </div>
                             </>
                         )}
                     </li>
                 ))}
             </ul>
+            {excluirPratoId && (
+                <div className={styles.modalBackdrop}>
+                    <div className={styles.modal}>
+                        <p>Deseja realmente excluir este prato?</p>
+                        <button className={styles.button} onClick={confirmarExclusao}>Sim</button>
+                        <button className={styles.button} onClick={cancelarExclusao}>Cancelar</button>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }

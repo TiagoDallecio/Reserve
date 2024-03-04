@@ -10,37 +10,82 @@ const Pratos = [
         id: 1,
         name: "Macarrão",
         descricao: "blablabla",
+        categoria: "pratopricipal",
         preco: 20.00,
         url: imagem
     },
     {
         id: 2,
         name: "Risotto",
+        categoria: "pratopricipal",
         descricao: "blablabla",
         preco: 30.00,
         url: imagem1
     },
     {
         id: 3,
-        name: "Risotto",
+        name: "Caipirinha",
+        categoria: "bebida",
         descricao: "blablabla",
         preco: 30.00,
         url: imagem1
     },
     {
         id: 4,
-        name: "Risotto",
+        name: "sorvete",
+        categoria: "sobremesa",
         descricao: "blablabla",
         preco: 30.00,
         url: imagem1
     },
-
+    {
+        id: 5,
+        name: "polenta frita",
+        categoria: "entrada",
+        descricao: "blablabla",
+        preco: 30.00,
+        url: imagem1
+    },
+    {
+        id: 6,
+        name: "picolé",
+        categoria: "sobremesa",
+        descricao: "blablabla",
+        preco: 30.00,
+        url: imagem1
+    },
+    {
+        id: 7,
+        name: "casquinha de siri",
+        categoria: "entrada",
+        descricao: "blablabla",
+        preco: 30.00,
+        url: imagem1
+    },
+    {
+        id: 8,
+        name: "5 cervejas",
+        categoria: "combo",
+        descricao: "blablabla",
+        preco: 30.00,
+        url: imagem1
+    },
+    {
+        id: 9,
+        name: "aguas",
+        categoria: "bebida sem alcool",
+        descricao: "blablabla",
+        preco: 30.00,
+        url: imagem1
+    },
 ];
 
 function Cardapio() {
     const [carrinho, setCarrinho] = useState([]);
     const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
     const carrinhoRef = useRef();
+    const categoriaRef = useRef(null);
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -62,7 +107,6 @@ function Cardapio() {
     };
 
     const handleQuantidadeChange = (id, quantidade) => {
-        // Verifica se a quantidade é menor que 1 e, se for, define como 1
         quantidade = Math.max(quantidade, 1);
         const novoCarrinho = carrinho.map(item =>
             item.id === id ? { ...item, quantidade } : item
@@ -79,30 +123,60 @@ function Cardapio() {
         return carrinho.reduce((total, prato) => total + prato.preco * prato.quantidade, 0);
     };
 
+    const categorias = [...new Set(Pratos.map(prato => prato.categoria))]; 
+
+    const pratosOrdenados = Pratos.sort((a, b) => {
+        const categoriasOrder = ['entrada', 'pratopricipal', 'sobremesa', 'bebida','bebida sem alcool', 'combos'];
+        const indexA = categoriasOrder.indexOf(a.categoria);
+        const indexB = categoriasOrder.indexOf(b.categoria);
+        
+        if (indexA === -1) {
+            categoriasOrder.push(a.categoria);
+        }
+        if (indexB === -1) {
+            categoriasOrder.push(b.categoria);
+        }
+
+        return categoriasOrder.indexOf(a.categoria) - categoriasOrder.indexOf(b.categoria);
+    });
+
+    const handleCategoriaClick = (categoria) => {
+        const categoriaContainer = document.getElementById(`categoria-${categoria}`);
+        if (categoriaContainer) {
+            categoriaContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setCategoriaSelecionada(categoria);
+        }
+    };
+
     return (
         <div className={styles.maxcontainer}>
-            
-        <div className={styles.container}>
-            <div className={styles.nome}>
-                <h1 className={styles.h1}>Restaurante</h1>
-                
+            <div className={styles.topbanner}>
+                {categorias.map(categoria => (
+                    <button key={categoria} className={styles.topbannerbutton} onClick={() => handleCategoriaClick(categoria)}>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</button>
+                ))}
             </div>
 
-            {Pratos.map(prato => (
-                <div className={styles.layout} key={prato.id}>
-                    <CaixaCardapio
-                        nome={prato.name}
-                        descricao={prato.descricao}
-                        preco={prato.preco}
-                        url={prato.url}
-                        id={prato.id}
-                        adicionarAoCarrinho={adicionarAoCarrinho}
-                        removerDoCarrinho={removerDoCarrinho}
-                    />
+            <div className={styles.container}>
+                <div className={styles.nome}>
+                    <h1 className={styles.h1}>Restaurante</h1>
                 </div>
-            ))}
-        </div>
-        {mostrarCarrinho && (
+
+                {pratosOrdenados.map(prato => (
+                    <div className={styles.layout} key={prato.id} id={`categoria-${prato.categoria}`}>
+                        <CaixaCardapio
+                            nome={prato.name}
+                            descricao={prato.descricao}
+                            preco={prato.preco}
+                            url={prato.url}
+                            id={prato.id}
+                            adicionarAoCarrinho={adicionarAoCarrinho}
+                            removerDoCarrinho={removerDoCarrinho}
+                        />
+                    </div>
+                ))}
+            </div>
+
+            {mostrarCarrinho && (
                 <div className={styles.overlay} ref={carrinhoRef}>
                     <div className={styles.carrinho}>
                         <h2>Carrinho <RiShoppingCartLine /></h2>
@@ -123,12 +197,13 @@ function Cardapio() {
                     </div>
                 </div>
             )}
-        {!mostrarCarrinho && (
-            <button type="button" className={styles.cart} onClick={() => setMostrarCarrinho(!mostrarCarrinho)}> 
-                    <RiShoppingCartLine /> 
+
+            {!mostrarCarrinho && (
+                <button type="button" className={styles.cart} onClick={() => setMostrarCarrinho(!mostrarCarrinho)}>
+                    <RiShoppingCartLine />
                     <span className={styles.cartstatus}>{carrinho.reduce((total, prato) => total + prato.quantidade, 0)}</span>
-            </button>)}
-            
+                </button>
+            )}
         </div>
     );
 }

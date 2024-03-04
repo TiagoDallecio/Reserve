@@ -1,21 +1,33 @@
 // CaixaCardapio.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../Layout/CaixaCardapio.module.css';
 
 function CaixaCardapio(props) {
-    const [checked, setChecked] = useState(false);
     const [quantidade, setQuantidade] = useState(1);
+    const [isChecked, setIsChecked] = useState(false);
 
     const backgroundImageStyle = {
         backgroundImage: `url(${props.url})`
     };
 
-    const handleButtonClick = () => {
-        setChecked(!checked);
-        if (!checked) {
-            props.adicionarAoCarrinho({ ...props, quantidade });
+    useEffect(() => {
+        const itemNoCarrinho = props.carrinho && props.carrinho.find(item => item.id === props.id);
+        if (itemNoCarrinho) {
+            setQuantidade(itemNoCarrinho.quantidade);
+            setIsChecked(true);
         } else {
-            props.removerDoCarrinho(props.id); // Remover do carrinho se já estiver presente
+            setQuantidade(1);
+            setIsChecked(false);
+        }
+    }, [props.carrinho, props.id]);
+
+    const handleButtonClick = () => {
+        if (isChecked) {
+            props.removerDoCarrinho(props.id);
+            setIsChecked(false);
+        } else {
+            props.adicionarAoCarrinho({ ...props, quantidade });
+            setIsChecked(true);
         }
     };
 
@@ -37,10 +49,12 @@ function CaixaCardapio(props) {
                 <div className={styles.descricao}>{props.descricao}</div>
                 <div className={styles.barrabaixa}>
                     <div className={styles.buttonContainer}>
-                        <button className={`${styles.button} ${checked ? styles.checked : ''}`} onClick={handleButtonClick}>
-                            {checked ? <span>&#10003;</span> : <span>+</span>}
+                        <button
+                            className={`${styles.button} ${isChecked ? styles.checked : ''}`}
+                            onClick={handleButtonClick}
+                        >
+                            {isChecked ? <span>&#10003;</span> : <span>+</span>}
                         </button>
-                        
                     </div>
                     <div className={styles.preco}>{props.preco},00</div>
                 </div>

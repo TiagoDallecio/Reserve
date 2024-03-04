@@ -123,13 +123,13 @@ function Cardapio() {
         return carrinho.reduce((total, prato) => total + prato.preco * prato.quantidade, 0);
     };
 
-    const categorias = [...new Set(Pratos.map(prato => prato.categoria))]; 
+    const categorias = [...new Set(Pratos.map(prato => prato.categoria))];
 
     const pratosOrdenados = Pratos.sort((a, b) => {
-        const categoriasOrder = ['entrada', 'pratopricipal', 'sobremesa', 'bebida','bebida sem alcool', 'combos'];
+        const categoriasOrder = ['entrada', 'pratopricipal', 'sobremesa', 'bebida', 'bebida sem alcool', 'combo'];
         const indexA = categoriasOrder.indexOf(a.categoria);
         const indexB = categoriasOrder.indexOf(b.categoria);
-        
+
         if (indexA === -1) {
             categoriasOrder.push(a.categoria);
         }
@@ -180,20 +180,33 @@ function Cardapio() {
                 <div className={styles.overlay} ref={carrinhoRef}>
                     <div className={styles.carrinho}>
                         <h2>Carrinho <RiShoppingCartLine /></h2>
-                        <ul>
-                            {carrinho.map((item) => (
-                                <li key={item.id}>
-                                    <div className={styles.barrabaixa}>
-                                        <span>{item.nome} - R$ {item.preco.toFixed(2)}</span>
-                                        <button type="button" className={styles.maisemenos} onClick={() => handleQuantidadeChange(item.id, item.quantidade - 1)}>-</button>
-                                        <input type="tel" value={item.quantidade} className={styles.input_qnt} onChange={(e) => handleQuantidadeChange(item.id, parseInt(e.target.value))}/>
-                                        <button type="button" className={styles.maisemenos} onClick={() => handleQuantidadeChange(item.id, item.quantidade + 1)}>+</button>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <p>Total: R$ {calcularTotal().toFixed(2)}</p>
-                        <button className={styles.pagar}>Continuar Compra</button>
+                        {carrinho.length === 0 ? (
+                            <div className={styles.vazio}>
+                                <h1>
+                                <RiShoppingCartLine />
+                                </h1>
+                                <p>O carrinho está vazio</p>
+                            </div>
+                            
+                        ) : (
+                            <ul>
+                                {carrinho.map((item) => (
+                                    <li key={item.id}>
+                                        <div className={styles.barrabaixa}>
+                                            <span>{item.nome} - R$ {item.preco.toFixed(2)}</span>
+                                            <button type="button" className={styles.maisemenos} onClick={() => handleQuantidadeChange(item.id, item.quantidade - 1)}>-</button>
+                                            <input type="tel" value={item.quantidade} className={styles.input_qnt} onChange={(e) => handleQuantidadeChange(item.id, parseInt(e.target.value))} />
+                                            <button type="button" className={styles.maisemenos} onClick={() => handleQuantidadeChange(item.id, item.quantidade + 1)}>+</button>
+                                            <button type="button" className={styles.remover} onClick={() => removerDoCarrinho(item.id)}>Remover</button>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        {carrinho.length !== 0 && (
+                            <p>Total: R$ {calcularTotal().toFixed(2)}</p>
+                        )}
+                        {carrinho.length !== 0 && <button className={styles.pagar}>Continuar Compra</button>}
                     </div>
                 </div>
             )}

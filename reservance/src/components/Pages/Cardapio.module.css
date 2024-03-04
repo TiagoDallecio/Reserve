@@ -189,3 +189,9 @@
   .topbannerbutton:hover {
     background-color: #0056b3;
   }
+  .vazio{
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    color: #000;
+  }

@@ -5,89 +5,27 @@ import imagem from '../../img/pratorestaurante.png';
 import imagem1 from '../../img/restaurantecima.png';
 import { RiShoppingCartLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
-
-
-const Pratos = [
-    {
-        id: 1,
-        name: "Macarrão",
-        descricao: "blablabla",
-        categoria: "pratopricipal",
-        preco: 20.00,
-        url: imagem
-    },
-    {
-        id: 2,
-        name: "Risotto",
-        categoria: "pratopricipal",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 3,
-        name: "Caipirinha",
-        categoria: "bebida",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 4,
-        name: "sorvete",
-        categoria: "sobremesa",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 5,
-        name: "polenta frita",
-        categoria: "entrada",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 6,
-        name: "picolé",
-        categoria: "sobremesa",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 7,
-        name: "casquinha de siri",
-        categoria: "entrada",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 8,
-        name: "5 cervejas",
-        categoria: "combo",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-    {
-        id: 9,
-        name: "aguas",
-        categoria: "bebida sem alcool",
-        descricao: "blablabla",
-        preco: 30.00,
-        url: imagem1
-    },
-];
+import axios from 'axios';
 
 function Cardapio() {
+    const [Pratos, setPratos] = useState([]);
     const [carrinho, setCarrinho] = useState([]);
     const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
     const carrinhoRef = useRef();
     const categoriaRef = useRef(null);
+
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/cardapio/1')
+            .then(response => {
+                setPratos(response.data);
+            })
+            .catch(error => {
+                console.error('Erro ao obter pratos:', error);
+            });
+    }, []);
+
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -169,10 +107,10 @@ function Cardapio() {
                     {pratosOrdenados.filter(prato => prato.categoria === categoria).map(prato => (
                         <div className={styles.layout} key={prato.id}>
                             <CaixaCardapio
-                                nome={prato.name}
+                                nome={prato.nome}
                                 descricao={prato.descricao}
                                 preco={prato.preco}
-                                url={prato.url}
+                                foto={prato.foto}
                                 id={prato.id}
                                 adicionarAoCarrinho={adicionarAoCarrinho}
                                 removerDoCarrinho={removerDoCarrinho}

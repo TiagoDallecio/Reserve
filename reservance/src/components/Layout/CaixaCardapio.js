@@ -56,7 +56,7 @@ function CaixaCardapio(props) {
                             {isChecked ? <span>&#10003;</span> : <span>+</span>}
                         </button>
                     </div>
-                    <div className={styles.preco}>{props.preco},00</div>
+                    <div className={styles.preco}>{props.preco}</div>
                 </div>
             </div>
         </div>

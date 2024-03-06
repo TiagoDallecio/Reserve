@@ -14,6 +14,7 @@ import Cadastro from './components/Pages/Cadastro'
 import Entrar from './components/Pages/Entrar'
 import Cardapio from './components/Pages/Cardapio'
 import Addprato from './components/Pages/Addprato'
+import Pagamento from './components/Pages/Pagamento'
 
 const name ='Reservance'
 
@@ -35,6 +36,7 @@ function App() {
            <Route exact path="/Cadastro" element={<Cadastro/>} />
            <Route exact path="/Entrar" element={<Entrar/>} />
            <Route exact path="/Cardapio" element={<Cardapio/>} />
+           <Route exact path="/Pagamento" element={<Pagamento/>} />
         </Routes>
     </Container>
       

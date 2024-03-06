@@ -1,11 +1,12 @@
-function Pagamento(){
+import React, { useState } from 'react';
+import styles from './Pagamento.module.css';
 
-    return(
-        <div>
-            
-        </div>
-    )
+function Pagamento() {
 
+    return (
+        <>
+        </>
+    );
 }
 
-export default Pagamento
+export default Pagamento;

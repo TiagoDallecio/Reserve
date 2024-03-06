@@ -4,6 +4,8 @@ import CaixaCardapio from '../Layout/CaixaCardapio';
 import imagem from '../../img/pratorestaurante.png';
 import imagem1 from '../../img/restaurantecima.png';
 import { RiShoppingCartLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
+
 
 const Pratos = [
     {
@@ -161,20 +163,25 @@ function Cardapio() {
                     <h1 className={styles.h1}>Restaurante</h1>
                 </div>
 
-                {pratosOrdenados.map(prato => (
-                    <div className={styles.layout} key={prato.id} id={`categoria-${prato.categoria}`}>
-                        <CaixaCardapio
-                            nome={prato.name}
-                            descricao={prato.descricao}
-                            preco={prato.preco}
-                            url={prato.url}
-                            id={prato.id}
-                            adicionarAoCarrinho={adicionarAoCarrinho}
-                            removerDoCarrinho={removerDoCarrinho}
-                        />
-                    </div>
-                ))}
-            </div>
+                {categorias.map(categoria => (
+                <React.Fragment key={categoria}>
+                    <h2 className={styles.categoria}>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</h2>
+                    {pratosOrdenados.filter(prato => prato.categoria === categoria).map(prato => (
+                        <div className={styles.layout} key={prato.id}>
+                            <CaixaCardapio
+                                nome={prato.name}
+                                descricao={prato.descricao}
+                                preco={prato.preco}
+                                url={prato.url}
+                                id={prato.id}
+                                adicionarAoCarrinho={adicionarAoCarrinho}
+                                removerDoCarrinho={removerDoCarrinho}
+                            />
+                        </div>
+                    ))}
+                </React.Fragment>
+            ))}
+        </div>
 
             {mostrarCarrinho && (
                 <div className={styles.overlay} ref={carrinhoRef}>
@@ -206,7 +213,7 @@ function Cardapio() {
                         {carrinho.length !== 0 && (
                             <p>Total: R$ {calcularTotal().toFixed(2)}</p>
                         )}
-                        {carrinho.length !== 0 && <button className={styles.pagar}>Continuar Compra</button>}
+                        {carrinho.length !== 0 && <Link to="/Pagamento" className={styles.pagar}>Continuar Compra</Link>}
                     </div>
                 </div>
             )}

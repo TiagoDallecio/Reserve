@@ -18,7 +18,7 @@ import com.reservance.reservance.repository.UserRepository;
 import com.reservance.reservance.security.TokenService;
 
 import jakarta.validation.Valid;
-import lombok.experimental.var;
+
 
 @RestController
 @RequestMapping("auth")

@@ -2,11 +2,11 @@ package com.reservance.reservance.model.User;
 
 public enum UserRoles {
 
-	ADMIN("admin"),
+	ADMIN("ADMIN"),
 	
-	USER("user"),
+	USER("USER"),
 	
-	RESTAURANT("restaurant");
+	RESTAURANT("RESTAURANT");
 	
 	private String role;
 	

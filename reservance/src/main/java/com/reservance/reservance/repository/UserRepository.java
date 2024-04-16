@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.reservance.reservance.model.User.User;
 
-public interface UserRepository extends JpaRepository<User, String>{
-	UserDetails findByemail (String email);
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long>{
+	Optional<User> findByemail (String email);
 }

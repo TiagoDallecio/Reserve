@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import styles from './Cadastro.module.css';
 import Input from '../form/Input';
+import axios from 'axios';
+
 
 function Cadastro() {
+  
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,6 +13,19 @@ function Cadastro() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [erro, setErro] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const[post,setPost] = useState('')
+
+  function createUser() { axios.post('http://localhost:8080/register', {
+    nome: username,
+    email: email,
+    password: password,
+    role: selectedOption
+  }, 
+)
+.then((response) => {
+  setPost(response.data);
+});
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +56,7 @@ function Cadastro() {
           <Input
             type="text"
             text="Nome"
-            name="nome"S
+            name="nome"
             id="username"
             placeholder="Insira o seu Nome de usuario"
             value={username}
@@ -82,8 +98,8 @@ function Cadastro() {
           <input
               type="checkbox"
               name="opcao1"
-              checked={selectedOption === 'opcao1'}
-              onChange={() => setSelectedOption('opcao1')}
+              checked={selectedOption === 'RESTAURANT'}
+              onChange={() => setSelectedOption('RESTAURANT')}
             />
             Estabelecimento
           </label>
@@ -91,13 +107,13 @@ function Cadastro() {
             <input
               type="checkbox"
               name="opcao2"
-              checked={selectedOption === 'opcao2'}
-              onChange={() => setSelectedOption('opcao2')}
+              checked={selectedOption === 'USER'}
+              onChange={() => setSelectedOption('USER')}
             />
             Usuário
           </label>
           {erro && <p className={styles.errorMessage}>{errorMessage}</p>}
-          <button type="submit">Cadastrar</button>
+          <button type="submit" onClick={createUser}>Cadastrar</button>
         </form>
       </div2>
     </div>

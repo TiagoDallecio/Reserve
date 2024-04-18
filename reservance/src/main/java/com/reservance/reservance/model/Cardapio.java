@@ -7,7 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "tbl_cardapio")
 public class Cardapio {
@@ -19,22 +23,6 @@ public class Cardapio {
 	@OneToOne
 	@JoinColumn(name = "estab", unique = true)
 	public Estabelecimento estab;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Estabelecimento getEstab() {
-		return estab;
-	}
-
-	public void setEstab(Estabelecimento estab) {
-		this.estab = estab;
-	}
 
 	@Override
 	public int hashCode() {
